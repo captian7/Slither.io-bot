@@ -292,7 +292,7 @@ window.sortEnemy = function(a, b) {
 };
 window.turnAround = function() {
     // Boilerplate function
-}
+};
 // Given an object (of which properties xx and yy are not null), return the object with an additional property 'distance'
 window.getDistanceFromMe = function(point) {
     if (point === null) return null;
@@ -338,6 +338,20 @@ window.drawDot = function(x, y, radius, colour) {
     context.fill();
     context.fillStyle = 'black';
 };
+// Draw an angle of value `angle` from starting angle `start`. Danger is a boolean.
+window.drawAngle = function(start, angle, danger){
+    var context = window.mc.getContext('2d');
+    context.globalAlpha = 0.6;
+    context.beginPath();
+    context.moveTo(window.mc.height/2, window.mc.width/2);
+    context.arc(window.mc.height/2, window.mc.width/2, window.gsc*100, start, angle);
+    context.lineTo(window.mc.height/2, window.mc.width/2);
+    context.closePath();
+    context.fillStyle = (danger) ? 'red' : 'green';
+    context.fill();
+    context.globalAlpha = 1;
+    context.fillStyle = 'black';
+};
 
 // Draw lines on the canvas
 window.drawLine = function(x2, y2, colour) {
@@ -379,6 +393,8 @@ window.onFrameUpdate = function() {
             foodCoordinates = window.screenToCanvas(foodCoordinates[0], foodCoordinates[1]);
             window.drawLine(foodCoordinates[0], foodCoordinates[1], 'green');
             window.drawDot(foodCoordinates[0], foodCoordinates[1], 5, 'red');
+            //window.drawAngle(window.snake.ang+Math.PI/4, window.snake.ang+3*Math.PI/4, true);
+            //window.drawAngle(window.snake.ang-3*Math.PI/4, window.snake.ang-Math.PI/4, true);
         }
     }
 };
