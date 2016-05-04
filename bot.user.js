@@ -343,9 +343,9 @@ window.drawAngle = function(start, angle, danger){
     var context = window.mc.getContext('2d');
     context.globalAlpha = 0.6;
     context.beginPath();
-    context.moveTo(window.mc.height/2, window.mc.width/2);
-    context.arc(window.mc.height/2, window.mc.width/2, window.gsc*100, start, angle);
-    context.lineTo(window.mc.height/2, window.mc.width/2);
+    context.moveTo(window.mc.width/2, window.mc.height/2);
+    context.arc(window.mc.width/2, window.mc.height/2, window.gsc*100, start, angle);
+    context.lineTo(window.mc.width/2, window.mc.height/2);
     context.closePath();
     context.fillStyle = (danger) ? 'red' : 'green';
     context.fill();
